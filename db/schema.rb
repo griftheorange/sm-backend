@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_05_202250) do
+ActiveRecord::Schema.define(version: 2020_02_05_224159) do
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.string "quake_db_id"
+    t.string "place"
+    t.string "dateAndTime"
+    t.integer "mag"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "lat"
+    t.integer "long"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
