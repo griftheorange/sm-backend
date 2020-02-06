@@ -8,4 +8,6 @@ class Bookmark < ApplicationRecord
     validates :mag, presence: true
     validates :lat, presence: true
     validates :long, presence: true
+
+    validates :user_id, uniqueness: {scope: :quake_db_id}
 end

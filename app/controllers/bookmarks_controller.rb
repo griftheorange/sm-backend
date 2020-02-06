@@ -4,6 +4,12 @@ class BookmarksController < ApplicationController
         render json: @bookmarks
     end
 
+    def destroy
+        @bookmark = Bookmark.find_by(id: params[:id])
+        @bookmark.destroy()
+        render json: @bookmark
+    end
+
     def create
         @bookmark = Bookmark.create({
             user_id: params[:user_id],
