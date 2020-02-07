@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :comments
+  resources :commented_quakes
   resources :bookmarks
   resources :users
   

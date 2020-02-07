@@ -8,5 +8,7 @@
 
 User.destroy_all
 Bookmark.destroy_all
+Comment.destroy_all
+CommentedQuake.destroy_all
 
 User.create(username: "g", password: "g")

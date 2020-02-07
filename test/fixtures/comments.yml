@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  commented_quake: one
+  date_posted: MyString
+  content: MyText
+
+two:
+  user: two
+  commented_quake: two
+  date_posted: MyString
+  content: MyText
