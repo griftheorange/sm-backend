@@ -1,6 +1,9 @@
 require 'jwt'
 
 class UsersController < ApplicationController
+
+    before_action :authenticate, only: [:show]
+
     def index
         @users = User.all
         render json: @users
@@ -46,5 +49,17 @@ class UsersController < ApplicationController
         }
         token = JWT.encode payload, hmac_secret, 'HS256'
         token
+    end
+
+    def authenticate
+        hmac_secret = 'seismik_sekrets'
+        token = JSON.parse(request.headers["Authorization"])
+        decoded = JWT.decode token["token"], hmac_secret, true, { algorithm: 'HS256' }
+        if
+            decoded[0]["user_id"] == token["user_id"]
+            return
+        else
+            render json: {unauthorized: {go_away: "Go Away"}}
+        end
     end
 end

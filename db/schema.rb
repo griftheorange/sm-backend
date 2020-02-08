@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_07_203622) do
+ActiveRecord::Schema.define(version: 2020_02_07_222939) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.string "quake_db_id"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2020_02_07_203622) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "quake_name"
+    t.integer "quake_mag"
     t.index ["commented_quake_id"], name: "index_comments_on_commented_quake_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
