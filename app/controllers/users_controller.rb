@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     private
 
     def gen_user_token(user)
-        hmac_secret = 'seismik_sekrets'
+        hmac_secret = Rails.application.credentials[:hmac][:secret_key]
         payload = {
             user_id: user[:id]
         }
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     end
 
     def authenticate
-        hmac_secret = 'seismik_sekrets'
+        hmac_secret = Rails.application.credentials[:hmac][:secret_key]
         token = JSON.parse(request.headers["Authorization"])
         decoded = JWT.decode token["token"], hmac_secret, true, { algorithm: 'HS256' }
         if
@@ -61,5 +61,7 @@ class UsersController < ApplicationController
         else
             render json: {unauthorized: {go_away: "Go Away"}}
         end
+
+        # render json: {unauthorized: {go_away: "Go Away"}}
     end
 end
