@@ -61,7 +61,5 @@ class UsersController < ApplicationController
         else
             render json: {unauthorized: {go_away: "Go Away"}}
         end
-
-        # render json: {unauthorized: {go_away: "Go Away"}}
     end
 end
