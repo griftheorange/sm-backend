@@ -14,4 +14,8 @@ class Comment < ApplicationRecord
   def comment_quake
     return self.commented_quake.quake_db_id
   end
+
+  def user_img_URL
+    self.user.image_url
+  end
 end

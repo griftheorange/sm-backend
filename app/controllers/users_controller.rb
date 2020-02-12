@@ -18,6 +18,25 @@ class UsersController < ApplicationController
         end
     end
 
+    def update
+        @user = User.find_by(id: params[:id])
+        if @user
+            if params["file"]
+                file = params["file"].tempfile
+                if @user.public_img_id
+                    deleteFromCloud(@user.public_img_id)
+                end
+                cloudRet = uploadToCloud(file)
+                @user.update(image_url: cloudRet["url"], public_img_id: cloudRet["public_id"])
+                render json: @user
+            elsif params["address"]
+                render json: @user.update(address: params[:address])
+            elsif params["radius"]
+                render json: @user.update(radius_concern: params[:radius].to_i)
+            end
+        end
+    end
+
     def login
         @user = User.find_by(username: params[:username])
         if(@user)
@@ -61,5 +80,25 @@ class UsersController < ApplicationController
         else
             render json: {unauthorized: {go_away: "Go Away"}}
         end
+    end
+
+    def uploadToCloud(file)
+        auth = {
+            cloud_name: 'dzzbsrh9a',
+            api_key: '499476266595425',
+            api_secret: '93EtXNtQuJNZcBOWODqGHx-_nWQ',
+            resource_type: "raw"
+        }
+        return Cloudinary::Uploader.upload(file, auth)
+    end
+
+    def deleteFromCloud(name)
+        auth = {
+            cloud_name: 'dzzbsrh9a',
+            api_key: '499476266595425',
+            api_secret: '93EtXNtQuJNZcBOWODqGHx-_nWQ',
+            resource_type: "raw"
+        }
+        Cloudinary::Uploader.destroy(name, auth)
     end
 end
