@@ -41,14 +41,24 @@ The password for this profile is "g" if you want to test the login, or you can m
 ## Models
 The model tree for the backend is as follows: 
 
-Users -< Comments >- CommentedQuakes
 Users -< Bookmarks
+
+
+Users -< Comments >- CommentedQuakes
 
 
 ### Users:
 
+The users model has many comments, and many bookmarks. The user keeps track of the following attributes: 
 
+  - Username
+  - BCrypt digested password
+  - Address (default nil)
+  - Radius Concern (default nil)
+  - Profile Image URL (default nil)
+  - Public Image ID (default nil)
+  
+Currently, users are permitted to update everything except their password. Of note is the image URL and the public image id. They are always changed together. When a user uploads an image, it is sent to a Cloudinary server to host which returns a URL to access the image, and a public id to manipulate the image on the DB. If a user changes their profile pic, the backend uses the id to delete the old from the server, then updates the URL and id with the new values returned by Cloudinary.
 
-
-
+## Bookmarks: 
 
