@@ -42,9 +42,7 @@ The password for this profile is "g" if you want to test the login, or you can m
 The model tree for the backend is as follows: 
 
 Users -< Comments >- CommentedQuakes
-
-  |
-  ---< Bookmarks
+Users -< Bookmarks
 
 
 ### Users:
