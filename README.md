@@ -5,11 +5,11 @@ After pulling, run bundle to install required gem packages.
 
 Then, run the following terminal commands:
 
-- rails db:create
-- rails db:migrate
-- rails db:seed
-- delete the credentials file at config/credentials.yml.enc
-- EDITOR="code --wait" rails credentials:edit
+- $=> rails db:create
+- $=> rails db:migrate
+- $=> rails db:seed
+- $=> rm config/credentials.yml.enc
+- $=> EDITOR="code --wait" rails credentials:edit
 **NOTE: replace 'code' in the line above with your text editor of choice (e.g. atom, vim, etc.)
 
 The last command should open up a credentials.yml file for you to edit. In this file, insert the following code:
