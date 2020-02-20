@@ -1,13 +1,7 @@
 # README
+Backend for SeisMix, Rails API server. Ruby Version 2.6.1
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
+After pulling, run bundle to install required gem packages.
 
 * Configuration
 

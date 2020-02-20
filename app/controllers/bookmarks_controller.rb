@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+    #standard controller actions for index, destroy, create
     def index
         @bookmarks = Bookmark.all
         render json: @bookmarks

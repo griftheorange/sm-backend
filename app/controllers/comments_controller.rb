@@ -10,6 +10,9 @@ class CommentsController < ApplicationController
         render json: @comment
     end
 
+    #Special function for creating a comment. First checks if the event being commented has been commented before
+    #if found, it creates a new comment for the pre-existing cq object
+    #if not found, first creates a cq object, then creates a comment associating it to that new object
     def create
         cqs = CommentedQuake.all
         found = cqs.find{|cq|

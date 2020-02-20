@@ -2,6 +2,7 @@ require 'jwt'
 
 class UsersController < ApplicationController
 
+    #users go through token authorization before relavent data sent out
     before_action :authenticate, only: [:show]
 
     def index
@@ -18,6 +19,9 @@ class UsersController < ApplicationController
         end
     end
 
+    #Update controller used to modify profile pic, address, radius concern attr of user.
+    #If profile pic updated, runs cloudinary function in private field below to delete old
+    #pics from cloud, upload new pics and assign appropriate url and img_ids to user
     def update
         @user = User.find_by(id: params[:id])
         if @user
@@ -61,6 +65,9 @@ class UsersController < ApplicationController
 
     private
 
+    #generates a user token with hmac encryption. Secret stored in non-committed yml credentials file
+    #de-encryption accesses the same secret key, confirms token id matches decrypted id
+
     def gen_user_token(user)
         hmac_secret = Rails.application.credentials[:hmac][:secret_key]
         payload = {
@@ -81,6 +88,8 @@ class UsersController < ApplicationController
             render json: {unauthorized: {go_away: "Go Away"}}
         end
     end
+
+    #uses Cloudinary server specs to authorize uploads and deletions from external server
 
     def uploadToCloud(file)
         auth = {

@@ -4,6 +4,8 @@ class CommentedQuakesController < ApplicationController
         render json: @commented_quakes
     end
 
+    #commented quake objects only exist if an event has been commented on before.
+    #show controller renders conditionally based on whether a pre-existing comment exists
     def show
         @commented_quake = CommentedQuake.find_by(quake_db_id: params[:id])
         if @commented_quake
