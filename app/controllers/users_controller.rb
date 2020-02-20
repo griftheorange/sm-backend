@@ -67,6 +67,7 @@ class UsersController < ApplicationController
 
     #generates a user token with hmac encryption. Secret stored in non-committed yml credentials file
     #de-encryption accesses the same secret key, confirms token id matches decrypted id
+    #yml encryption key for config 48eb8937d40ba168b2d566cddff05c6a, see README for settup
 
     def gen_user_token(user)
         hmac_secret = Rails.application.credentials[:hmac][:secret_key]
