@@ -35,6 +35,17 @@ Once all this is done you should be set to authorize and run with cloudinary, ru
 
 The password for this profile is "g" if you want to test the login, or you can make a new account
 
+The model tree for the backend is as follows: 
+
+Users -< Comments >- CommentedQuakes
+  |
+  ---< Bookmarks
+
+
+Users:
+
+
+
 
 
 
