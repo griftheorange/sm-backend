@@ -20,21 +20,19 @@ The string can be replaced with anything you like, but it is the key for your lo
 
 Once all this is done you should be set to authorize and run with cloudinary, run "rails s" to boot your server up on localhost:3000. Go to http://localhost:3000/users to check if your files seeded properly. You should see: 
 
-[
-  {
-    "id": 1,
-    "username": "g",
-    "address": null,
-    "image_url": null,
-    "radius_concern": null,
-    "bookmarks": [
-      
-    ],
-    "comments": [
-      
+
+    [
+    {
+        "id": 1,
+        "username": "g",
+        "address": null,
+        "image_url": null,
+        "radius_concern": null,
+        "bookmarks": [],
+        "comments": []
+    }
     ]
-  }
-]
+
 
 
 
