@@ -33,6 +33,8 @@ Once all this is done you should be set to authorize and run with cloudinary, ru
     }
     ]
 
+The password for this profile is "g" if you want to test the login, or you can make a new account
+
 
 
 
