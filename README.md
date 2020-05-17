@@ -16,7 +16,7 @@ Then, run the following terminal commands:
 The last command should open up a credentials.yml file for you to edit. In this file, insert the following code:
 
 hmac:
-  secret_key: "my personal secret key"
+    secret_key: "my personal secret key"
 
 The string can be replaced with anything you like, but it is the key for your local pull that ecrypts the JWT tokens for Authorization. This will not be saved to github, so remember it, or be prepared to reset it if you ever re-clone.
 
